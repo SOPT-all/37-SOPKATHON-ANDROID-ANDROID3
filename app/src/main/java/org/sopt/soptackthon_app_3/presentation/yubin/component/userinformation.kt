@@ -27,16 +27,7 @@ import coil.compose.AsyncImage
 import org.sopt.soptackthon_app_3.R
 import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 import org.sopt.soptackthon_app_3.core.util.noRippleClickable
-
-data class CompactUser(
-    val name: String,
-    val description: String,
-    val rating: Double,
-    val distance: String,
-    val isVerified: Boolean = true,
-    val profileImagePlaceholder: String
-)
-
+import org.sopt.soptackthon_app_3.presentation.yubin.CompactUser
 
 @Composable
 fun CompactUserInformationComponent(
