@@ -80,43 +80,44 @@ data class SopkathonTypography(
 
 val defaultSopkathonTypography = SopkathonTypography(
 
+
     heading = TypographyTokens.Heading(
         headingSb20 = SopkathonTextStyle(
             fontFamily = SopkathonRegularFont.SemiBold,
             fontSize = 16.sp,
-            letterSpacing = 0.sp
+            letterSpacing = 0.em
         ),
         headingSb18 = SopkathonTextStyle(
             fontFamily = SopkathonRegularFont.SemiBold,
             fontSize = 18.sp,
-            letterSpacing = 0.sp
+            letterSpacing = 0.em
         )
     ),
     title = TypographyTokens.Title(
         titleB16 = SopkathonTextStyle(
             SopkathonRegularFont.Bold,
             fontSize = 16.sp,
-            letterSpacing = 0.sp
+            letterSpacing = 0.em
         ),
         titleB14 = SopkathonTextStyle(
             SopkathonRegularFont.Bold,
             fontSize = 14.sp,
-            letterSpacing = (-1).sp
+            letterSpacing = (-0.01).em
         ),
         titleSb16 = SopkathonTextStyle(
             SopkathonRegularFont.SemiBold,
             fontSize = 16.sp,
-            letterSpacing = (-1).sp
+            letterSpacing = (-0.01).em
         ),
         titleSb14 = SopkathonTextStyle(
             SopkathonRegularFont.SemiBold,
             fontSize = 14.sp,
-            letterSpacing = (-1).sp
+            letterSpacing = (-0.01).em
         ),
         titleSb12 = SopkathonTextStyle(
             SopkathonRegularFont.SemiBold,
             fontSize = 12.sp,
-            letterSpacing = (-1).sp
+            letterSpacing = (-0.01).em
         )
     ),
 
@@ -124,33 +125,31 @@ val defaultSopkathonTypography = SopkathonTypography(
         bodyM16 = SopkathonTextStyle(
             fontFamily = SopkathonRegularFont.Medium,
             fontSize = 16.sp,
-            letterSpacing = (-2).sp
+            letterSpacing = (-0.02).em
         ),
         bodyM14 = SopkathonTextStyle(
             fontFamily = SopkathonRegularFont.Medium,
             fontSize = 14.sp,
-            letterSpacing = (-2).sp
+            letterSpacing = (-0.02).em
         ),
         bodyM13 = SopkathonTextStyle(
             fontFamily = SopkathonRegularFont.Medium,
             fontSize = 13.sp,
-            letterSpacing = (-2).sp
+            letterSpacing = (-0.02).em
         )
     ),
-    caption = TypographyTokens.Caption(
-        captionM12 = SopkathonTextStyle(
-            fontFamily = SopkathonRegularFont.Medium,
-            fontSize = 12.sp,
-            letterSpacing = (-2).sp
-        ),
-        SopkathonTextStyle(
-            fontFamily = SopkathonRegularFont.Regular,
-            fontSize = 12.sp,
-            letterSpacing = (-2).sp
-        ),
+        caption = TypographyTokens.Caption(
+            captionM12 = SopkathonTextStyle(
+                fontFamily = SopkathonRegularFont.Medium,
+                fontSize = 12.sp,
+                letterSpacing = (-0.02).em
+            ),
+            SopkathonTextStyle(
+                fontFamily = SopkathonRegularFont.Regular,
+                fontSize = 12.sp,
+                letterSpacing = (-0.02).em
+            ),
+        )
     )
-
-
-)
 
 val LocalSopkathonTypography = staticCompositionLocalOf { defaultSopkathonTypography }
