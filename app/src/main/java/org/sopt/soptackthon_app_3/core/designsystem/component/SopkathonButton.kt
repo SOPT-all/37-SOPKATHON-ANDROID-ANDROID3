@@ -23,7 +23,12 @@ fun SopkathonButton(
 ) {
     val backgrondColor = when (isEnabled) {
         true -> SopkathonTheme.colors.primary
-        false -> SopkathonTheme.colors.primary900
+        false -> SopkathonTheme.colors.primary300
+    }
+
+    val textColor = when(isEnabled) {
+        true -> SopkathonTheme.colors.white
+        false -> SopkathonTheme.colors.primary500
     }
     Box(
         modifier = modifier
@@ -39,7 +44,7 @@ fun SopkathonButton(
         Text(
             text = label,
             style = SopkathonTheme.typography.title.titleB16,
-            color = SopkathonTheme.colors.white
+            color = textColor
         )
     }
 }

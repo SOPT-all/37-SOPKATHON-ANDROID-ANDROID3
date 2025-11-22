@@ -23,13 +23,13 @@ fun SopkathonTopbar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = SopkathonTheme.colors.white)
+            .background(color = SopkathonTheme.colors.primary)
             .padding(horizontal = 13.dp, vertical = 13.dp)
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_back_arrow),
             contentDescription = null,
-            tint = Color.Unspecified
+            tint = SopkathonTheme.colors.white
         )
     }
 }

@@ -5,11 +5,12 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.sopt.soptackthon_app_3.data.service.BookingService
 import org.sopt.soptackthon_app_3.data.service.ExampleService
 import retrofit2.Retrofit
 
 object ApiFactory {
-    private val BASE_URL: String = ""
+    private val BASE_URL: String = "http://3.35.37.190:8080"
     private val json = Json {
         ignoreUnknownKeys = true
     }
@@ -34,5 +35,5 @@ object ApiFactory {
 
 object ServicePool {
     val exampleService = ApiFactory.create<ExampleService>()
-
+    val bookingService = ApiFactory.create<BookingService>()
 }
