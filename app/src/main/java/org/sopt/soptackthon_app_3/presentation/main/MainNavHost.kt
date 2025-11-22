@@ -26,7 +26,8 @@ fun MainNavHost(
     ) {
         NavHost(
             navController = navController,
-            startDestination = "yubin",
+//            startDestination = "yubin",
+            startDestination = "doyeon",
             modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = 70.dp)

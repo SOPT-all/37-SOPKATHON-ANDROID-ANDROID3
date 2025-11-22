@@ -1,5 +1,6 @@
 package org.sopt.soptackthon_app_3.presentation.doyeon.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -145,7 +146,10 @@ private fun HelperDetail(
 private fun VerificationButton() {
     Row(
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
         modifier = Modifier
+            .clip(RoundedCornerShape(8.dp))
+            .background(SopkathonTheme.colors.white)
             .padding(vertical = 6.dp)
             .width(165.dp)
     ) {

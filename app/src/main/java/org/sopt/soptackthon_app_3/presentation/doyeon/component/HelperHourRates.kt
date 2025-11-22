@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -22,6 +23,7 @@ fun HelperHourRates(
 ) {
     Row(
         modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.ic_helper_money),
@@ -33,10 +35,17 @@ fun HelperHourRates(
         Spacer(Modifier.weight(1f))
 
         Text(
-            text = hourRates,
+            text = "$$hourRates~",
             style = SopkathonTheme.typography.heading.headingSb20,
             color = SopkathonTheme.colors.primary
         )
+
+        Text(
+            text = "/hr",
+            style = SopkathonTheme.typography.body.bodyM14,
+            color = SopkathonTheme.colors.primary
+        )
+
     }
 }
 
@@ -45,7 +54,7 @@ fun HelperHourRates(
 private fun HelperHourRatesPreview() {
     SopkathonTheme {
         HelperHourRates(
-            hourRates = "$35/hr",
-        )
+            hourRates = "35",
+            )
     }
 }
