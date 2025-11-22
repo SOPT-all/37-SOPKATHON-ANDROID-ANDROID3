@@ -9,36 +9,49 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
+import org.sopt.soptackthon_app_3.presentation.jimin.component.AnimateReportCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.BookingInfoCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressBorderCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressContentTitle
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressTitle
+import org.sopt.soptackthon_app_3.presentation.jimin.viewmodel.JiminViewModel
 
 
 @Composable
 fun JiminRoute(
+    progressViewModel: JiminViewModel = viewModel(),
     navigateToYubin: () -> Unit
 ){
+
+    val progressUiState by progressViewModel.uiState.collectAsStateWithLifecycle()
+
+    //val progressTimeUiState by progressViewModel.timer.collectAsStateWithLifecycle()
+
+    val progressTimeVisibleUiState by progressViewModel.timeUiState.collectAsStateWithLifecycle()
+
     JiminScreen(
-        locateText = "String",
-        dateText = "String",
-        startTime = "String",
-        duration = "String",
-        cashText = 70,
-        bookingInfoModel = BookingInfoModel(
-            reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
-            reportBackgroundColor = SopkathonTheme.colors.primary200,
-            reportCardHorizontalPadding = 18.dp
-        ),
-        preContent = "preContent",
+        locateText = progressUiState.locateText,
+        dateText = progressUiState.dateText,
+        startTime = progressUiState.startTime,
+        duration = progressUiState.duration,
+        cashText = progressUiState.cashText,
+        bookingInfoModel = progressUiState.bookingInfoModel,
+        preContent = progressUiState.preContent,
+        animateContent = progressUiState.animateContent,
+        isAnimateVisible = progressTimeVisibleUiState.isVisible,
         navigateToYubin = navigateToYubin
     )
 }
+
+
 @Composable
 fun JiminScreen (
     locateText: String,
@@ -48,6 +61,8 @@ fun JiminScreen (
     cashText: Int,
     bookingInfoModel: BookingInfoModel,
     preContent: String,
+    animateContent: String,
+    isAnimateVisible: Boolean,
     modifier : Modifier = Modifier,
     navigateToYubin:() -> Unit = {}
 ){
@@ -109,6 +124,13 @@ fun JiminScreen (
                 },
             )
 
+            Spacer(modifier = Modifier.height(10.dp))
+
+            AnimateReportCard(
+                animateContent = animateContent,
+                isVisible = isAnimateVisible
+            )
+
             Spacer(modifier = Modifier.height(60.dp))
 
         }
@@ -140,7 +162,18 @@ private fun ReviewJiminScreen(){
                     "- Shopping bags\n" +
                     "- Face mask\n" +
                     "\n" +
-                    "Please feel free to relax while I handle everything. Looking forward to helping!"
+                    "Please feel free to relax while I handle everything. Looking forward to helping!",
+            animateContent = "Hello, this is Sarah Johnson.\n" +
+                    "\n" +
+                    "I will be visiting today at 23:10 to begin the Grocery Shopping service.\n" +
+                    "\n" +
+                    "What I'm bringing:\n" +
+                    "- Cleaning supplies\n" +
+                    "- Shopping bags\n" +
+                    "- Face mask\n" +
+                    "\n" +
+                    "Please feel free to relax while I handle everything. Looking forward to helping!",
+            isAnimateVisible = true
         )
     }
 }
