@@ -6,13 +6,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import org.sopt.soptackthon_app_3.R
 import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 
@@ -21,12 +25,13 @@ fun BookTopBar(
     modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(
                 color = SopkathonTheme.colors.primary
             )
             .padding(horizontal = 16.dp, vertical = 20.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
         Column(
@@ -51,10 +56,13 @@ fun BookTopBar(
             )
         }
 
-//        Image(
-//            painter = painterResource(id = R.drawable.img_charactermain),
-//            contentDescription = null
-//        )
+        Image(
+            painter = painterResource(R.drawable.img_character2),
+            contentDescription = "logo",
+            modifier = Modifier
+                .zIndex(1f)
+                .size(60.dp)
+        )
     }
 }
 
