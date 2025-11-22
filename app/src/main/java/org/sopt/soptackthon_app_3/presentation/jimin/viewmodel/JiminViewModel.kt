@@ -27,8 +27,11 @@ class JiminViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
+            delay(3000L)
+            _timeUiState.update { it.copy(isPreVisible = true)
+            }
             delay(5000L)
-            _timeUiState.update { it.copy(isVisible = true)
+            _timeUiState.update { it.copy(isPreVisible = true, isPostVisible = true)
             }
         }
     }

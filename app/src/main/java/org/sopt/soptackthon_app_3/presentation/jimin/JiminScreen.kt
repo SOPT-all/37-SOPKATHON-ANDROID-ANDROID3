@@ -59,7 +59,8 @@ fun JiminRoute(
         cashText = progressUiState.cashText,
         bookingInfoModel = progressUiState.bookingInfoModel,
         preContent = progressUiState.preContent,
-        isAnimateVisible = progressTimeVisibleUiState.isVisible,
+        isPreAnimateVisible = progressTimeVisibleUiState.isPreVisible,
+        isPostAnimateVisible = progressTimeVisibleUiState.isPostVisible,
         navigateToYubin = navigateToYubin
     )
 }
@@ -76,7 +77,8 @@ fun JiminScreen (
     cashText: Int,
     bookingInfoModel: BookingInfoModel,
     preContent: String,
-    isAnimateVisible: Boolean,
+    isPreAnimateVisible: Boolean,
+    isPostAnimateVisible: Boolean,
     modifier : Modifier = Modifier,
     navigateToYubin:() -> Unit = {}
 ){
@@ -117,66 +119,39 @@ fun JiminScreen (
                 cashText = cashText,
                 bookingInfoModel = BookingInfoModel(
                     reportContent = bookingInfoModel.reportContent,
-                    reportBackgroundColor = bookingInfoModel.reportBackgroundColor,
+                    reportBackgroundColor = SopkathonTheme.colors.primary200,
                     reportCardHorizontalPadding = bookingInfoModel.reportCardHorizontalPadding
                 )
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            Column {
-                ProgressContentTitle(
-                    title = "Post-Service Report",
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-
-                ProgressBorderCard(
-                    cardRadius = 8.dp,
-                    content = {
-                        Column (
-                            modifier = Modifier.padding(horizontal = 20.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ){
-                            Image(
-                                painter = painterResource(R.drawable.pre_img),
-                                contentDescription = null,
-                                modifier = modifier
-                                    .fillMaxWidth()
-                                    .clip(
-                                        shape = RoundedCornerShape(16.dp)
-                                    )
-                                    .border(
-                                        width = 1.dp,
-                                        color = SopkathonTheme.colors.primary300
-                                    ),
-                                contentScale = ContentScale.Crop
-                            )
-
-                            Spacer(modifier = Modifier.height(12.dp))
-
-                            Text(
-                                text = "Hello, this is Sarah Johnson.\n" +
-                                        "I’ll be arriving today at 11:10 PM to begin the Grocery Shopping service.\n" +
-                                        "What I’ll bring:\n" +
-                                        "- Cleaning supplies\n" +
-                                        "- Shopping bags\n" +
-                                        "- Face mask\n" +
-                                        "Please relax while I take care of everything for you. I’m looking forward to helping!",
-                                color = SopkathonTheme.colors.primary500,
-                                style = SopkathonTheme.typography.body.bodyM14,
-                                textAlign = TextAlign.Start,
-                                fontWeight = FontWeight.Normal
-                            )
-                        }
-
-                    },
-                )
-            }
+            AnimateReportCard(
+                title = "Pre-Service Report",
+                imgRes = R.drawable.pre_img,
+                content = "Hello, this is Sarah Johnson.\n" +
+                        "I’ll be arriving today at 11:10 PM to begin the Grocery Shopping service.\n" +
+                        "What I’ll bring:\n" +
+                        "- Cleaning supplies\n" +
+                        "- Shopping bags\n" +
+                        "- Face mask\n" +
+                        "Please relax while I take care of everything for you. I’m looking forward to helping!",
+                isVisible = isPreAnimateVisible
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
 
             AnimateReportCard(
-                isVisible = isAnimateVisible
+                title = "Post-Service Report",
+                imgRes = R.drawable.new_img,
+                content = "Hello, this is Sarah Johnson.\n I’ve just finished the Grocery Shopping service for your parent.\n" +
+                        "Here’s what I completed today:\n" +
+                        "Purchased all items on the list\n" +
+                        "Organized everything neatly at home\n" +
+                        "Double-checked expiration dates and stored items properly\n" +
+                        "Your parent is doing well, and everything was taken care of safely and comfortably.\u2028 If you have any additional requests or follow-ups, please feel free to let me know.\n" +
+                        "I was happy to help today!",
+                isVisible = isPostAnimateVisible
             )
 
             Spacer(modifier = Modifier.height(60.dp))
@@ -217,7 +192,8 @@ private fun ReviewJiminScreen(){
                     "- Face mask\n" +
                     "\n" +
                     "Please feel free to relax while I handle everything. Looking forward to helping!",
-            isAnimateVisible = true
+            isPreAnimateVisible = true,
+            isPostAnimateVisible = true
         )
     }
 }

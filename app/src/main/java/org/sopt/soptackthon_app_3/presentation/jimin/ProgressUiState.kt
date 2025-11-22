@@ -12,7 +12,7 @@ data class ProgressUiState(
     val bookingFee: Int = 0,
     val cashText: Int = 0,
     val bookingInfoModel: BookingInfoModel = BookingInfoModel(
-        reportContent = "adfasdfasdfasd",
+        reportContent = "Please keep an extra eye on my parents and make sure everything goes smoothly for them.",
         reportBackgroundColor = Color.White,
         reportCardHorizontalPadding = 0.dp,
         reportCardRadius = 0.dp
@@ -21,5 +21,6 @@ data class ProgressUiState(
 )
 
 data class ProgressTimeUiState(
-    val isVisible: Boolean = false
+    val isPreVisible: Boolean = false,
+    val isPostVisible: Boolean = false,
 )
