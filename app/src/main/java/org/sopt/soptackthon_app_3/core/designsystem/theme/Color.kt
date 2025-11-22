@@ -18,7 +18,7 @@ val primary_300=Color(0xFFE5E7EA)
 
 val primary_200=Color(0XFFF2F4F5)
 
-val primary_100=Color(0XFFF8FAFB)
+val primary_100=Color(0XFFFDFFFF)
 
 
 //secondary Color
@@ -37,6 +37,7 @@ val white_=Color(0xFFFFFFFF)
 data class SopkathonColor(
 
     val primary:Color=primary_,
+    val secondary:Color = secondary_,
     val primary900: Color=primary_900,
     val primary800: Color=primary_800,
     val primary500: Color= primary_500,
@@ -51,6 +52,7 @@ data class SopkathonColor(
 val defaultSopkathonColor = SopkathonColor(
 
     primary_,
+    secondary = secondary_,
     primary900 = primary_900,
     primary800 = primary_800,
     primary500 = primary_500,
