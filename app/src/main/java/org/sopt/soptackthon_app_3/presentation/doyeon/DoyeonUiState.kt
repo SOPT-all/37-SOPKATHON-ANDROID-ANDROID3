@@ -12,5 +12,5 @@ data class DoyeonUiState(
     val experience: String = "",
     val availabilityList: List<HelperAvailabilityData> = emptyList(),
     val languageList: List<String> = emptyList(),
-    val hourRates: String = "",
+    val hourRates: Float = 0f,
 )

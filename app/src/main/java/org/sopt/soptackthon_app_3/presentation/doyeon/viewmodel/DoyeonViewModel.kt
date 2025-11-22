@@ -1,6 +1,5 @@
 package org.sopt.soptackthon_app_3.presentation.doyeon.viewmodel
 
-import android.net.http.HttpException
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,7 +35,7 @@ class DoyeonViewModel : ViewModel() {
                         imgUrl = data.imageUrl,
                         name = data.name,
                         rate = data.rate,
-                        distance = data.location,
+                        distance = "0.2 mi",
                         serviceList = serviceList,
                         bio = data.about,
                         experience = data.experience,
@@ -45,10 +44,7 @@ class DoyeonViewModel : ViewModel() {
                         hourRates = data.hourlyRate
                     )
                 }
-            } catch (h: HttpException) {
-                // TODO
             } catch (e: Exception) {
-                // TODO
             }
         }
     }
