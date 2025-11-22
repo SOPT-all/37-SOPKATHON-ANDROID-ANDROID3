@@ -26,7 +26,7 @@ fun ProgressTitle(
                 color = SopkathonTheme.colors.white
             )
             .padding(horizontal = 24.dp)
-            .padding(top = 24.dp, bottom = 68.dp)
+            .padding(top = 24.dp)
     ){
         Text(
             text = title,

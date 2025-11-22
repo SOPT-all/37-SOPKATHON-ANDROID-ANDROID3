@@ -32,6 +32,7 @@ import org.sopt.soptackthon_app_3.core.designsystem.component.SopkathonTopbar
 import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 import org.sopt.soptackthon_app_3.presentation.jimin.component.AnimateReportCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.BookingInfoCard
+import org.sopt.soptackthon_app_3.presentation.jimin.component.LinearProgressBar
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressBorderCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressContentTitle
@@ -96,6 +97,12 @@ fun JiminScreen (
                     "You can check the progress of your request here.\n" +
                     "We’ll safely follow up with your parents."
         )
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        LinearProgressBar()
+
+        Spacer(modifier = Modifier.height(32.dp))
 
         Column (
             modifier = Modifier
