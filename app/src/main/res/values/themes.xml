@@ -2,4 +2,17 @@
 <resources>
 
     <style name="Theme.SOPTACKTHON_APP_3" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary</item>
+
+        <item name="windowSplashScreenAnimationDuration">200</item>
+
+        <item name="windowSplashScreenAnimatedIcon">@drawable/transparent</item>
+
+        <item name="postSplashScreenTheme">@style/Theme.SOPTACKTHON_APP_3</item>
+
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:navigationBarColor">@color/primary</item>
+    </style>
 </resources>
