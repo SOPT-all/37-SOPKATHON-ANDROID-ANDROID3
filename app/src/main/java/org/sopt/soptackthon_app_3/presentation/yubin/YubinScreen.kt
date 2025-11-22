@@ -13,17 +13,17 @@ import org.sopt.soptackthon_app_3.core.util.noRippleClickable
 
 @Composable
 fun YubinRoute(
-    navigateToJuwan: () -> Unit,
+    navigateToDoyeon: () -> Unit,
 ) {
     YubinScreen(
-        navigateToJuwan = navigateToJuwan
+        navigateToDoyeon = navigateToDoyeon
     )
 }
 
 @Composable
 fun YubinScreen(
     modifier: Modifier = Modifier,
-    navigateToJuwan: () -> Unit = {},
+    navigateToDoyeon: () -> Unit = {},
 ) {
     Box(
         modifier = modifier
@@ -33,7 +33,7 @@ fun YubinScreen(
         Text(
             text = "Yubin Screen",
             modifier = Modifier
-                .noRippleClickable(onClick = navigateToJuwan),
+                .noRippleClickable(onClick = navigateToDoyeon),
         )
     }
 }
