@@ -56,7 +56,7 @@ fun HelperDetailList(
 
         DetailItem(
             icon = R.drawable.ic_helper_language,
-            title = "Availability"
+            title = "Language"
         ) {
             HelperLanguage(languageList)
         }
@@ -99,7 +99,7 @@ private fun HelperExperience(
     experience: String,
 ) {
     Text(
-        text = experience,
+        text = experience + "years",
         style = SopkathonTheme.typography.body.bodyM14,
         color = SopkathonTheme.colors.primary800,
     )
@@ -175,7 +175,7 @@ private fun HelperDetailListPreview() {
 
     SopkathonTheme {
         HelperDetailList(
-            experience = "3years",
+            experience = "3",
             availabilityList = alst,
             languageList = listOf(
                 "English",

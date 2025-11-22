@@ -1,7 +1,5 @@
 package org.sopt.soptackthon_app_3.presentation.doyeon.viewmodel
 
-import android.net.http.HttpException
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +19,6 @@ class DoyeonViewModel : ViewModel() {
     ) {
         viewModelScope.launch {
             try {
-                Log.d("SOPT","🚀 시작")
                 val result = ServicePool.helperDetailService.getHelperInfo(helperId)
                 val data = result.data
                 val serviceList = data.serviceOffers.map { dto ->
@@ -33,13 +30,12 @@ class DoyeonViewModel : ViewModel() {
                         time = dto.availableTime
                     )
                 }
-                Log.d("SOPT","✅ 데이터 받아옴")
                 _uiState.update { currentState ->
                     currentState.copy(
                         imgUrl = data.imageUrl,
                         name = data.name,
                         rate = data.rate,
-                        distance = "0.2",
+                        distance = "0.2 mi",
                         serviceList = serviceList,
                         bio = data.about,
                         experience = data.experience,
@@ -49,7 +45,6 @@ class DoyeonViewModel : ViewModel() {
                     )
                 }
             } catch (e: Exception) {
-                Log.e("SOPT",e.toString())
             }
         }
     }
