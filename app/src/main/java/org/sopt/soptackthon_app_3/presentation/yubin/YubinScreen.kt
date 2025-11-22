@@ -28,7 +28,9 @@ fun YubinScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(color = SopkathonTheme.colors.white)
+            .background(
+                color = SopkathonTheme.colors.white
+            )
     ) {
         Text(
             text = "Yubin Screen",
