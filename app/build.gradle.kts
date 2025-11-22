@@ -77,4 +77,6 @@ dependencies {
     // Coil
     implementation(libs.coil.base)
     implementation(libs.coil.compose)
+    implementation("com.airbnb.android:lottie-compose:6.1.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }
