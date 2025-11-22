@@ -147,7 +147,7 @@ fun JuwanScreen(
                 BookInfoSection(
                     title = uiState.visitDate.ifEmpty { "Select Date" },
                     leftIcon = R.drawable.ic_fill_calendar,
-                    rightIcon = null,
+                    rightIcon = R.drawable.ic_dropdown,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
@@ -240,7 +240,7 @@ fun JuwanScreen(
             }
 
             item {
-                Spacer(modifier = Modifier.height(120.dp))
+                Spacer(modifier = Modifier.height(154.dp))
             }
         }
 
@@ -259,22 +259,17 @@ fun JuwanScreen(
             )
         }
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(color = SopkathonTheme.colors.white)
-                .align(Alignment.BottomEnd)
-        ) {
             SopkathonButton(
-                label = if (uiState.isLoading) "Loading..." else "Confirm Booking",
+                label = if (uiState.isLoading) "Loading..." else "Confirm Booking ($10)",
                 onClick = { onEvent(JuwanUiEvent.ConfirmBooking) },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .offset(y = (-30).dp),
+                    .background(color = SopkathonTheme.colors.white)
+                    .align(alignment = Alignment.BottomCenter)
+                    .padding(top = 12.dp, bottom = 46.dp)
+                    .padding(horizontal = 16.dp),
                 isEnabled = !uiState.isLoading && uiState.serviceOfferId > 0
             )
-        }
+
 
         if (uiState.isLoading) {
             CircularProgressIndicator(

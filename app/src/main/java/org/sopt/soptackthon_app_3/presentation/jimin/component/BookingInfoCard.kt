@@ -32,9 +32,9 @@ fun BookingInfoCard(
     dateText: String,
     startTime: String,
     confirmTime: String,
-    serviceFee: Int,
-    bookingFee: Int,
-    cashText: Int,
+    serviceFee: Double,
+    bookingFee: Double,
+    cashText: Double,
     bookingInfoModel: BookingInfoModel,
     modifier: Modifier = Modifier
 ) {
@@ -50,7 +50,7 @@ fun BookingInfoCard(
                 ){
                     ProgressInfoTitle(
                         iconRes = R.drawable.ic_locate,
-                        title = "Locate",
+                        title = "Location",
                     )
 
                     Spacer(modifier = Modifier.weight(1f))
@@ -224,9 +224,9 @@ private fun BookingInfoCardPreview(){
             dateText = "2025 / 11 / 22",
             startTime = "9:00 am",
             confirmTime = "2 Hour",
-            serviceFee = 70,
-            bookingFee = 10,
-            cashText = 70,
+            serviceFee = 70.0,
+            bookingFee = 10.0,
+            cashText = 70.0,
             bookingInfoModel = BookingInfoModel(
                 reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
                 reportBackgroundColor = SopkathonTheme.colors.primary200,

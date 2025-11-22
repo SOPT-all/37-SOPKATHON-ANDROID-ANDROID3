@@ -26,20 +26,20 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import org.sopt.soptackthon_app_3.R
 import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
+import org.sopt.soptackthon_app_3.core.util.noRippleClickable
 import org.sopt.soptackthon_app_3.presentation.yubin.CompactUser
-
 
 @Composable
 fun CompactUserInformationComponent(
     user: CompactUser,
-    onUserClick: (CompactUser) -> Unit,
+    onUserClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, top = 16.dp, end = 8.dp, bottom = 16.dp)
-            .clickable { onUserClick(user) },
+            .padding(horizontal = 16.dp)
+            .noRippleClickable(onClick = onUserClick),
         // 흰색 배경
         colors = CardDefaults.cardColors(containerColor = SopkathonTheme.colors.white),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
@@ -108,7 +108,7 @@ fun CompactUserInformationComponent(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = user.rating.toString(),
+                            text = user.rating.toString().take(4),
                             style = SopkathonTheme.typography.caption.captionR12,
                             color = SopkathonTheme.colors.primary500
                         )

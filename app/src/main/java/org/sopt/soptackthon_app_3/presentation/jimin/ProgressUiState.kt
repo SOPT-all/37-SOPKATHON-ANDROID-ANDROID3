@@ -4,13 +4,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 data class ProgressUiState(
-    val locateText: String = "",
-    val dateText: String = "",
-    val startTime: String = "",
-    val confirmText: String = "",
-    val serviceFee: Int = 0,
-    val bookingFee: Int = 0,
-    val cashText: Int = 0,
+    val locateText: String = "1234 Maple Street Springfield,\n" +
+            "IL 62704 USA",
+    val dateText: String = "2025 / 11 / 22",
+    val startTime: String = "17:00 - 20:00",
+    val confirmText: String = "17:00 - 19:00",
+    val serviceFee: Double = 70.0,
+    val bookingFee: Double = 10.0,
+    val cashText: Double = 80.0,
     val bookingInfoModel: BookingInfoModel = BookingInfoModel(
         reportContent = "Please keep an extra eye on my parents and make sure everything goes smoothly for them.",
         reportBackgroundColor = Color.White,
