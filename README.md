@@ -126,3 +126,10 @@
 
 <img width="600" src="https://github.com/user-attachments/assets/fd52765d-59af-4adf-a411-1dbacb995615" />
 
+
+## 6. 안드 팀원들 사진 (after)
+<img width="600" src="https://github.com/user-attachments/assets/58791a9e-8c76-48de-9ae2-8ac48be69ddf" />
+
+## 7. 시연 영상
+
+
