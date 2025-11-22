@@ -15,6 +15,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -59,108 +60,110 @@ fun YubinScreen(
     modifier: Modifier = Modifier,
     navigateToDoyeon: () -> Unit = {},
 ) {
-    Scaffold(
-        bottomBar = { MainBottomBar() }
-    ) { paddingValues ->
-        Column(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+
+        Box(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .background(SopkathonTheme.colors.primary)
+                .padding(start = 16.dp, top = 30.dp, end = 16.dp, bottom = 20.dp)
         ) {
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(SopkathonTheme.colors.primary)
-                    .padding(start = 16.dp, top = 30.dp, end = 16.dp, bottom = 20.dp)
-            ) {
-                Column {
-                    Row(
-                        modifier.height(IntrinsicSize.Max), verticalAlignment = Alignment.Bottom
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.logo),
-                            contentDescription = "logo",
-                            Modifier
-                                .width(150.dp)
-                                .height(60.dp)
-                                .padding(start = 2.dp, end = 10.dp)
-                        )
-                        Spacer(modifier=modifier.width(30.dp))
-                        Image(
-                            painter = painterResource(R.drawable.img_character1),
-                            contentDescription = "logo",
-                            Modifier
-                                .width(200.dp)
-                                .height(70.dp)
-                                .padding(start = 2.dp, end = 10.dp)
-                        )
-
-
-                    }
-
-                    // 검색창
-                    OutlinedTextField(
-                        value = "",
-                        onValueChange = { /* Handle search text */ },
-                        placeholder = {
-                            Text(
-                                "What kind of helper are you looking for?",
-                                style = SopkathonTheme.typography.caption.captionR12,
-                                color = SopkathonTheme.colors.primary500
-                            )
-                        },
-                        leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Search", tint =SopkathonTheme.colors.primary500)},
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(
-                                color = SopkathonTheme.colors.primary100,
-                                shape = RoundedCornerShape(size = 12.dp)
-                            )
-                            .padding(start = 16.dp, end = 12.dp),
-
-                        singleLine = true,
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedContainerColor = SopkathonTheme.colors.white,
-                            unfocusedContainerColor = SopkathonTheme.colors.white,
-                            focusedBorderColor = Color.Transparent,
-                            unfocusedBorderColor = Color.Transparent
-                        )
+            Column {
+                Row(
+                    modifier.height(IntrinsicSize.Max), verticalAlignment = Alignment.Bottom
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.img_logo_x3),
+                        contentDescription = "logo",
+                        Modifier
+                            .width(150.dp)
+                            .height(60.dp)
+                            .padding(start = 2.dp, end = 10.dp)
+                    )
+                    Spacer(modifier = modifier.width(30.dp))
+                    Image(
+                        painter = painterResource(R.drawable.img_character_01_x3),
+                        contentDescription = "logo",
+                        Modifier
+                            .width(200.dp)
+                            .height(70.dp)
+                            .padding(start = 2.dp, end = 10.dp)
                     )
 
+
                 }
 
+                // 검색창
+                OutlinedTextField(
+                    value = "",
+                    onValueChange = { /* Handle search text */ },
+                    placeholder = {
+                        Text(
+                            "What kind of helper are you looking for?",
+                            style = SopkathonTheme.typography.caption.captionR12,
+                            color = SopkathonTheme.colors.primary500
+                        )
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Search",
+                            tint = SopkathonTheme.colors.primary500
+                        )
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = SopkathonTheme.colors.primary100,
+                            shape = RoundedCornerShape(size = 12.dp)
+                        )
+                        .padding(start = 16.dp, end = 12.dp),
+
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedContainerColor = SopkathonTheme.colors.white,
+                        unfocusedContainerColor = SopkathonTheme.colors.white,
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent
+                    )
+                )
 
             }
-            Column(
+
+
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(0.85f)
+                .padding(top = 0.dp)
+                .background(SopkathonTheme.colors.primary200)
+        ) {
+            TopSearchAndTitleSection()
+
+            // 헬퍼 목록 영역
+            LazyColumn(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.85f)
-                    .padding(top = 0.dp)
-                    .background(SopkathonTheme.colors.primary200)
+                    .fillMaxSize()
+                    .background(SopkathonTheme.colors.primary200),
+                contentPadding = PaddingValues(vertical = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+                // BottomBar 영역 확보
             ) {
-                TopSearchAndTitleSection()
-
-                // 헬퍼 목록 영역
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
-                        .background(SopkathonTheme.colors.primary200)
-
-                    // BottomBar 영역 확보
-                ) {
-                    // Mock Data를 사용하여 목록을 채웁니다.
-                    items(mockHelperList) { user ->
-                        CompactUserInformationComponent(
-                            user = user,
-                            onUserClick = { /* Handle click */ }
-                        )
-                    }
+                // Mock Data를 사용하여 목록을 채웁니다.
+                items(mockHelperList) { user ->
+                    CompactUserInformationComponent(
+                        user = user,
+                        onUserClick = navigateToDoyeon
+                    )
                 }
-
             }
 
         }
+
     }
 }
 
@@ -202,7 +205,7 @@ private fun TopSearchAndTitleSection(modifier: Modifier = Modifier) {
             text = "Helper List",
             style = SopkathonTheme.typography.title.titleSb16,
             color = Color.Black,
-            modifier = Modifier.offset(y = (-10).dp) // 검색창이 위로 올라가면서 생긴 공간 메우기
+//            modifier = Modifier.offset(y = (-10).dp) // 검색창이 위로 올라가면서 생긴 공간 메우기
         )
     }
 
@@ -215,7 +218,8 @@ private fun FilterButtons() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 16.dp)
+            .padding(top = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         FilterButton(text = "All", isSelected = true)
@@ -238,8 +242,7 @@ private fun FilterButton(text: String, isSelected: Boolean) {
             .clip(RoundedCornerShape(100.dp))
             .background(backgroundColor)
             .border(1.dp, borderColor, RoundedCornerShape(20.dp))
-            .padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp)
-            .clickable { /* Handle filter click */ },
+            .padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 8.dp),
         color = textColor,
         style = SopkathonTheme.typography.caption.captionM12
     )
