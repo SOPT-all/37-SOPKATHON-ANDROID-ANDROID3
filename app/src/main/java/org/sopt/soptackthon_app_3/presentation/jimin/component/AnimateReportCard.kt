@@ -30,6 +30,9 @@ import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 
 @Composable
 fun AnimateReportCard(
+    title: String,
+    imgRes: Int,
+    content: String,
     isVisible: Boolean,
     modifier: Modifier = Modifier,
     enter: EnterTransition = fadeIn(),
@@ -43,7 +46,7 @@ fun AnimateReportCard(
     ) {
         Column {
             ProgressContentTitle(
-                title = "Post-Service Report",
+                title = title,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
 
@@ -51,11 +54,11 @@ fun AnimateReportCard(
                 cardRadius = 8.dp,
                 content = {
                     Column (
-                        modifier = Modifier.padding(horizontal = 20.dp),
+                        modifier = Modifier.padding(horizontal = 10.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
                         Image(
-                            painter = painterResource(R.drawable.new_img),
+                            painter = painterResource(imgRes),
                             contentDescription = null,
                             modifier = modifier
                                 .fillMaxWidth()
@@ -72,13 +75,7 @@ fun AnimateReportCard(
                         Spacer(modifier = Modifier.height(12.dp))
 
                         Text(
-                            text = "Hello, this is Sarah Johnson.\n I’ve just finished the Grocery Shopping service for your parent.\n" +
-                                    "Here’s what I completed today:\n" +
-                                    "Purchased all items on the list\n" +
-                                    "Organized everything neatly at home\n" +
-                                    "Double-checked expiration dates and stored items properly\n" +
-                                    "Your parent is doing well, and everything was taken care of safely and comfortably.\u2028 If you have any additional requests or follow-ups, please feel free to let me know.\n" +
-                                    "I was happy to help today!",
+                            text = content,
                             color = SopkathonTheme.colors.primary500,
                             style = SopkathonTheme.typography.body.bodyM14,
                             textAlign = TextAlign.Start,
@@ -96,6 +93,15 @@ fun AnimateReportCard(
 @Composable
 private fun AnimateReportCardPreview() {
     AnimateReportCard(
+        title = "Pre-Service Report",
+        imgRes = R.drawable.pre_img,
+        content = "Hello, this is Sarah Johnson.\n" +
+                "I’ll be arriving today at 11:10 PM to begin the Grocery Shopping service.\n" +
+                "What I’ll bring:\n" +
+                "- Cleaning supplies\n" +
+                "- Shopping bags\n" +
+                "- Face mask\n" +
+                "Please relax while I take care of everything for you. I’m looking forward to helping!",
         isVisible = true
 
     )

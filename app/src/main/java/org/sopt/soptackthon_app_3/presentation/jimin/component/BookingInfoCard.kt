@@ -141,7 +141,7 @@ fun BookingInfoCard(
                     ProgressCard(
                         content = bookingInfoModel.reportContent,
                         backgroundColor = bookingInfoModel.reportBackgroundColor,
-                        horizontalPadding = bookingInfoModel.reportCardHorizontalPadding
+                        horizontalPadding = 20.dp
                     )
                 }
 
