@@ -133,3 +133,18 @@
 ## 7. 시연 영상
 
 
+
+
+https://github.com/user-attachments/assets/1aa1b2e5-0520-4f97-93f9-cf3961376e33
+
+
+
+https://github.com/user-attachments/assets/0fb68bba-f5bb-43f8-9bb3-9165970d8d93
+
+
+https://github.com/user-attachments/assets/e1c82e22-5e56-4556-82d5-7f6d1a1fdfe7
+
+
+
+
+
