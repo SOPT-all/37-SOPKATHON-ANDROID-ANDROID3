@@ -39,7 +39,7 @@ fun BookInfoSection(
             )
             .border(
                 width = 1.dp,
-                color = SopkathonTheme.colors.primary500,
+                color = SopkathonTheme.colors.primary300,
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(horizontal = 20.dp, vertical = 12.dp),

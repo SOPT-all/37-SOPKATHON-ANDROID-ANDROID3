@@ -23,7 +23,7 @@ fun BookEssential(
         modifier = modifier
             .fillMaxWidth()
             .background(
-                color = SopkathonTheme.colors.white,
+                color = SopkathonTheme.colors.primary200,
             )
             .padding(horizontal = 16.dp)
     ) {

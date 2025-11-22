@@ -21,7 +21,9 @@ import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 fun BookCostSection(
     rate: String,
     duration: String,
-    estimated: String,
+    serviceEstimate: String,
+    bookingFee: String,
+    totalEstimate: String,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -33,39 +35,45 @@ fun BookCostSection(
             )
             .border(
                 width = 1.dp,
-                color = SopkathonTheme.colors.primary500,
+                color = SopkathonTheme.colors.primary300,
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(horizontal = 16.dp, vertical = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = "Hourly Rate"
+                text = "Hourly Rate",
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary500
             )
 
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
-                text = rate
+                text = rate,
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary800
             )
         }
 
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = "Duration"
+                text = "Duration",
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary500
             )
 
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
-                text = duration
+                text = duration,
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary800
             )
         }
 
@@ -78,21 +86,67 @@ fun BookCostSection(
         )
 
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = "Hourly Rate"
+                text = "Service Estimate",
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary500
             )
 
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
-                text = rate
+                text = serviceEstimate,
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary800
+            )
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Booking Fee",
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary500
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Text(
+                text = bookingFee,
+                style = SopkathonTheme.typography.body.bodyM14,
+                color = SopkathonTheme.colors.primary800
+            )
+        }
+
+        HorizontalDivider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 12.dp),
+            thickness = 1.dp,
+            color = SopkathonTheme.colors.primary300
+        )
+
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Total Estimate",
+                style = SopkathonTheme.typography.title.titleSb16,
+                color = SopkathonTheme.colors.black
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Text(
+                text = totalEstimate,
+                style = SopkathonTheme.typography.title.titleSb16,
+                color = SopkathonTheme.colors.primary
             )
         }
     }
-
 }
 
 
@@ -101,11 +155,12 @@ fun BookCostSection(
 private fun ReviewBookCostSection() {
     SopkathonTheme {
         BookCostSection(
-            rate = "10000",
-            duration = "2",
-            estimated = "20000",
-            modifier = Modifier
+            rate = "$15.00/hour",
+            duration = "2.5 hours",
+            serviceEstimate = "$37.50",
+            bookingFee = "$5.00",
+            totalEstimate = "$42.50",
+            modifier = Modifier.padding(16.dp)
         )
-
     }
 }
