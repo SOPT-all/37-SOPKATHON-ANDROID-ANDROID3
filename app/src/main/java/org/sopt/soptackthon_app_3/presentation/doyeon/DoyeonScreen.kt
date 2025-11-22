@@ -13,17 +13,17 @@ import org.sopt.soptackthon_app_3.core.util.noRippleClickable
 
 @Composable
 fun DoyeonRoute(
-    navigateToJimin: () -> Unit,
+    navigateToJuwan: () -> Unit,
 ) {
     DoyeonScreen(
-        navigateToJimin = navigateToJimin
+        navigateToJuwan = navigateToJuwan
     )
 }
 
 @Composable
 fun DoyeonScreen(
     modifier: Modifier = Modifier,
-    navigateToJimin: () -> Unit = {},
+    navigateToJuwan: () -> Unit = {},
 ) {
     Box(
         modifier = modifier
@@ -33,7 +33,7 @@ fun DoyeonScreen(
         Text(
             text = "Doyoun Screen",
             modifier = Modifier
-                .noRippleClickable(onClick = navigateToJimin),
+                .noRippleClickable(onClick = navigateToJuwan),
         )
     }
 }

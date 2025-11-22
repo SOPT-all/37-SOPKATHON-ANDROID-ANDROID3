@@ -22,17 +22,17 @@ import org.sopt.soptackthon_app_3.presentation.juwan.component.BookTopBar
 
 @Composable
 fun JuwanRoute(
-    navigateToDoyeon: () -> Unit,
+    navigateToJimin: () -> Unit,
 ) {
     JuwanScreen(
-        navigateToDoyeon = navigateToDoyeon
+        navigateToJimin = navigateToJimin
     )
 }
 
 @Composable
 fun JuwanScreen(
     modifier: Modifier = Modifier,
-    navigateToDoyeon: () -> Unit = {},
+    navigateToJimin: () -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier
@@ -58,7 +58,7 @@ fun JuwanScreen(
         items(count = 4, contentType = { it }) { index ->
             BookServiceSelect(
                 serviceText = "Service $index",
-                onBookServiceSelect = navigateToDoyeon,
+                onBookServiceSelect = navigateToJimin,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
