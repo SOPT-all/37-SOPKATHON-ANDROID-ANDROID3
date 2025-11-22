@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -30,7 +31,9 @@ fun BookingInfoCard(
     locateText: String,
     dateText: String,
     startTime: String,
-    duration: String,
+    confirmTime: String,
+    serviceFee: Int,
+    bookingFee: Int,
     cashText: Int,
     bookingInfoModel: BookingInfoModel,
     modifier: Modifier = Modifier
@@ -42,7 +45,7 @@ fun BookingInfoCard(
                 modifier = Modifier
             ) {
                 Row (
-                    modifier = Modifier.padding(top = 5.dp, bottom = 16.dp),
+                    modifier = Modifier.padding(bottom = 20.dp),
                     verticalAlignment = Alignment.Top
                 ){
                     ProgressInfoTitle(
@@ -60,10 +63,10 @@ fun BookingInfoCard(
                     )
                 }
 
-                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary100))
+                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary300))
 
                 Row (
-                    modifier = Modifier.padding(vertical = 16.dp),
+                    modifier = Modifier.padding(vertical = 20.dp),
                     verticalAlignment = Alignment.Top
                 ){
                     ProgressInfoTitle(
@@ -81,40 +84,52 @@ fun BookingInfoCard(
                     )
                 }
 
-                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary100))
+                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary300))
 
                 Row (
-                    modifier = Modifier.padding(vertical = 16.dp),
+                    modifier = Modifier.padding(vertical = 20.dp),
                     verticalAlignment = Alignment.Top
                 ){
                     ProgressInfoTitle(
                         iconRes = R.drawable.ic_time,
-                        title = "Time",
+                        title = "Available Time",
                     )
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    Column (
-                        modifier = Modifier.width(IntrinsicSize.Max),
-                    ){
-                        TimeField(
-                            timeFieldTitle = "Start time",
-                            timeFieldText = startTime
-                        )
-
-                        Spacer(modifier = Modifier.height(6.dp))
-
-                        TimeField(
-                            timeFieldTitle = "Duration",
-                            timeFieldText = duration
-                        )
-                    }
+                    Text(
+                        text = startTime,
+                        color = SopkathonTheme.colors.primary800,
+                        style = SopkathonTheme.typography.caption.captionM12,
+                        textAlign = TextAlign.Right
+                    )
                 }
 
-                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary100))
+                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary300))
+
+                Row(
+                    modifier = Modifier.padding(vertical = 20.dp),
+                    verticalAlignment = Alignment.Top
+                ) {
+                    ProgressInfoTitle(
+                        iconRes = R.drawable.ic_check,
+                        title = "Confirmed Time",
+                    )
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+                    Text(
+                        text = confirmTime,
+                        color = SopkathonTheme.colors.primary800,
+                        style = SopkathonTheme.typography.caption.captionM12,
+                        textAlign = TextAlign.Right
+                    )
+                }
+
+                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary300))
 
                 Column(
-                    modifier = Modifier.padding(vertical = 16.dp),
+                    modifier = Modifier.padding(vertical = 20.dp),
                 ) {
                     ProgressInfoTitle(
                         iconRes = R.drawable.ic_chat,
@@ -130,25 +145,69 @@ fun BookingInfoCard(
                     )
                 }
 
-                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary100))
+                HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary300))
 
-                Row (
-                    modifier = Modifier.padding(top = 16.dp),
-                    verticalAlignment = Alignment.Top
+                Column (
+                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 20.dp)
                 ){
-                    ProgressInfoTitle(
-                        iconRes = R.drawable.ic_cash,
-                        title = "Total cost",
-                    )
+                    Row (
+                    ){
+                        Text(
+                            text = "Service Fee",
+                            color = SopkathonTheme.colors.primary500,
+                            style = SopkathonTheme.typography.body.bodyM14,
+                            fontWeight = FontWeight.Normal
+                        )
 
-                    Spacer(modifier = Modifier.weight(1f))
+                        Spacer(modifier = Modifier.weight(1f))
 
-                    Text(
-                        text = "${cashText}$",
-                        color = SopkathonTheme.colors.primary800,
-                        style = SopkathonTheme.typography.heading.headingSb20,
-                        textAlign = TextAlign.Right
-                    )
+                        Text(
+                            text = "$${serviceFee}",
+                            color = SopkathonTheme.colors.primary800,
+                            style = SopkathonTheme.typography.body.bodyM14
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Row {
+                        Text(
+                            text = "Booking Fee",
+                            color = SopkathonTheme.colors.primary500,
+                            style = SopkathonTheme.typography.body.bodyM14,
+                            fontWeight = FontWeight.Normal
+                        )
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+                        Text(
+                            text = "$${bookingFee}",
+                            color = SopkathonTheme.colors.primary800,
+                            style = SopkathonTheme.typography.body.bodyM14
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    Row (
+                        modifier = Modifier,
+                        verticalAlignment = Alignment.Top
+                    ){
+                        Text(
+                            text = "Total Cost",
+                            color = SopkathonTheme.colors.black,
+                            style = SopkathonTheme.typography.title.titleSb14
+                        )
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+                        Text(
+                            text = "$${cashText}",
+                            color = SopkathonTheme.colors.primary,
+                            style = SopkathonTheme.typography.heading.headingSb20,
+                            textAlign = TextAlign.Right
+                        )
+                    }
                 }
             }
         },
@@ -158,17 +217,21 @@ fun BookingInfoCard(
 @Preview(showBackground = true)
 @Composable
 private fun BookingInfoCardPreview(){
-    BookingInfoCard(
-        locateText = "1234 Maple Street Springfield,\n" +
-                "IL 62704 USA",
-        dateText = "2025 / 11 / 22",
-        startTime = "9:00 am",
-        duration = "2 Hour",
-        cashText = 70,
-        bookingInfoModel = BookingInfoModel(
-            reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
-            reportBackgroundColor = SopkathonTheme.colors.primary200,
-            reportCardHorizontalPadding = 18.dp
+    SopkathonTheme {
+        BookingInfoCard(
+            locateText = "1234 Maple Street Springfield,\n" +
+                    "IL 62704 USA",
+            dateText = "2025 / 11 / 22",
+            startTime = "9:00 am",
+            confirmTime = "2 Hour",
+            serviceFee = 70,
+            bookingFee = 10,
+            cashText = 70,
+            bookingInfoModel = BookingInfoModel(
+                reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
+                reportBackgroundColor = SopkathonTheme.colors.primary200,
+                reportCardHorizontalPadding = 18.dp
+            )
         )
-    )
+    }
 }

@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -22,7 +23,7 @@ import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 fun ProgressCard(
     content: String,
     backgroundColor: Color,
-    horizontalPadding: Dp,
+    horizontalPadding: Dp = 20.dp,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -37,8 +38,9 @@ fun ProgressCard(
     ) {
         Text(
             text = content,
-            color = SopkathonTheme.colors.primary900,
-            style = SopkathonTheme.typography.body.bodyM13
+            color = SopkathonTheme.colors.black,
+            style = SopkathonTheme.typography.body.bodyM14,
+            fontWeight = FontWeight.Normal
         )
     }
 }

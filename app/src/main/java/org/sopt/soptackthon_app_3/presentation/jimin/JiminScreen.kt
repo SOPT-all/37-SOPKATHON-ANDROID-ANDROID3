@@ -1,20 +1,34 @@
 package org.sopt.soptackthon_app_3.presentation.jimin
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import org.sopt.soptackthon_app_3.R
+import org.sopt.soptackthon_app_3.core.designsystem.component.SopkathonButton
+import org.sopt.soptackthon_app_3.core.designsystem.component.SopkathonTopbar
 import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 import org.sopt.soptackthon_app_3.presentation.jimin.component.AnimateReportCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.BookingInfoCard
@@ -33,19 +47,18 @@ fun JiminRoute(
 
     val progressUiState by progressViewModel.uiState.collectAsStateWithLifecycle()
 
-    //val progressTimeUiState by progressViewModel.timer.collectAsStateWithLifecycle()
-
     val progressTimeVisibleUiState by progressViewModel.timeUiState.collectAsStateWithLifecycle()
 
     JiminScreen(
         locateText = progressUiState.locateText,
         dateText = progressUiState.dateText,
         startTime = progressUiState.startTime,
-        duration = progressUiState.duration,
+        confirmText = progressUiState.confirmText,
+        serviceFee = progressUiState.serviceFee,
+        bookingFee = progressUiState.bookingFee,
         cashText = progressUiState.cashText,
         bookingInfoModel = progressUiState.bookingInfoModel,
         preContent = progressUiState.preContent,
-        animateContent = progressUiState.animateContent,
         isAnimateVisible = progressTimeVisibleUiState.isVisible,
         navigateToYubin = navigateToYubin
     )
@@ -57,11 +70,12 @@ fun JiminScreen (
     locateText: String,
     dateText: String,
     startTime: String,
-    duration: String,
+    confirmText: String,
+    serviceFee: Int,
+    bookingFee: Int,
     cashText: Int,
     bookingInfoModel: BookingInfoModel,
     preContent: String,
-    animateContent: String,
     isAnimateVisible: Boolean,
     modifier : Modifier = Modifier,
     navigateToYubin:() -> Unit = {}
@@ -72,32 +86,34 @@ fun JiminScreen (
             .fillMaxSize()
             .background(color = SopkathonTheme.colors.white)
     ){
+        SopkathonTopbar()
+
         ProgressTitle(
             title = "Service progress",
             subTitle = "Your reservation is confirmed!\n" +
-                    "We’ll keep you updated as things progress.",
-            modifier = Modifier
-                    .background(
-                color = SopkathonTheme.colors.primary500
-            )
+                    "You can check the progress of your request here.\n" +
+                    "We’ll safely follow up with your parents."
         )
 
         Column (
             modifier = Modifier
+                .background(color = SopkathonTheme.colors.primary200)
                 .padding(horizontal = 16.dp)
                 .verticalScroll(rememberScrollState())
         ){
 
             ProgressContentTitle(
-                title = "Booking Information",
-                modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
+                title = "Booking Info",
+                modifier = Modifier.padding(top = 32.dp, bottom = 8.dp)
             )
 
             BookingInfoCard(
                 locateText = locateText,
                 dateText = dateText,
                 startTime = startTime,
-                duration = duration,
+                confirmTime = confirmText,
+                serviceFee = serviceFee,
+                bookingFee = bookingFee,
                 cashText = cashText,
                 bookingInfoModel = BookingInfoModel(
                     reportContent = bookingInfoModel.reportContent,
@@ -108,34 +124,70 @@ fun JiminScreen (
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            ProgressContentTitle(
-                title = "Pre-Service Report",
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+            Column {
+                ProgressContentTitle(
+                    title = "Post-Service Report",
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
 
-            ProgressBorderCard(
-                cardRadius = 8.dp,
-                content = {
-                    ProgressCard(
-                        content = preContent,
-                        backgroundColor = SopkathonTheme.colors.primary300,
-                        horizontalPadding = 23.dp
-                    )
-                },
-            )
+                ProgressBorderCard(
+                    cardRadius = 8.dp,
+                    content = {
+                        Column (
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ){
+                            Image(
+                                painter = painterResource(R.drawable.pre_img),
+                                contentDescription = null,
+                                modifier = modifier
+                                    .fillMaxWidth()
+                                    .clip(
+                                        shape = RoundedCornerShape(16.dp)
+                                    )
+                                    .border(
+                                        width = 1.dp,
+                                        color = SopkathonTheme.colors.primary300
+                                    ),
+                                contentScale = ContentScale.Crop
+                            )
 
-            Spacer(modifier = Modifier.height(10.dp))
+                            Spacer(modifier = Modifier.height(12.dp))
+
+                            Text(
+                                text = "Hello, this is Sarah Johnson.\n" +
+                                        "I’ll be arriving today at 11:10 PM to begin the Grocery Shopping service.\n" +
+                                        "What I’ll bring:\n" +
+                                        "- Cleaning supplies\n" +
+                                        "- Shopping bags\n" +
+                                        "- Face mask\n" +
+                                        "Please relax while I take care of everything for you. I’m looking forward to helping!",
+                                color = SopkathonTheme.colors.primary500,
+                                style = SopkathonTheme.typography.body.bodyM14,
+                                textAlign = TextAlign.Start,
+                                fontWeight = FontWeight.Normal
+                            )
+                        }
+
+                    },
+                )
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
 
             AnimateReportCard(
-                animateContent = animateContent,
                 isVisible = isAnimateVisible
             )
 
             Spacer(modifier = Modifier.height(60.dp))
 
         }
-    }
 
+        /*SopkathonButton(
+            label = "Complete Request $${cashText}",
+            onClick = navigateToYubin
+        )*/
+    }
 }
 
 @Preview(showBackground = true)
@@ -146,7 +198,9 @@ private fun ReviewJiminScreen(){
             locateText = "String",
             dateText = "String",
             startTime = "String",
-            duration = "String",
+            confirmText = "String",
+            serviceFee = 60,
+            bookingFee = 10,
             cashText = 70,
             bookingInfoModel = BookingInfoModel(
                 reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
@@ -154,16 +208,6 @@ private fun ReviewJiminScreen(){
                 reportCardHorizontalPadding = 18.dp
             ),
             preContent = "Hello, this is Sarah Johnson.\n" +
-                    "\n" +
-                    "I will be visiting today at 23:10 to begin the Grocery Shopping service.\n" +
-                    "\n" +
-                    "What I'm bringing:\n" +
-                    "- Cleaning supplies\n" +
-                    "- Shopping bags\n" +
-                    "- Face mask\n" +
-                    "\n" +
-                    "Please feel free to relax while I handle everything. Looking forward to helping!",
-            animateContent = "Hello, this is Sarah Johnson.\n" +
                     "\n" +
                     "I will be visiting today at 23:10 to begin the Grocery Shopping service.\n" +
                     "\n" +

@@ -7,16 +7,17 @@ data class ProgressUiState(
     val locateText: String = "",
     val dateText: String = "",
     val startTime: String = "",
-    val duration: String = "",
+    val confirmText: String = "",
+    val serviceFee: Int = 0,
+    val bookingFee: Int = 0,
     val cashText: Int = 0,
     val bookingInfoModel: BookingInfoModel = BookingInfoModel(
-        reportContent = "",
+        reportContent = "adfasdfasdfasd",
         reportBackgroundColor = Color.White,
         reportCardHorizontalPadding = 0.dp,
         reportCardRadius = 0.dp
     ),
     val preContent: String = "",
-    val animateContent: String = ""
 )
 
 data class ProgressTimeUiState(

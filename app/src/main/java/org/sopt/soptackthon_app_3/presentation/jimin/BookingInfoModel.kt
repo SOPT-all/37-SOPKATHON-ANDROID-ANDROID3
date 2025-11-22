@@ -7,6 +7,6 @@ import androidx.compose.ui.unit.dp
 data class BookingInfoModel(
     val reportContent: String,
     val reportBackgroundColor: Color,
-    val reportCardHorizontalPadding: Dp = 23.dp,
+    val reportCardHorizontalPadding: Dp = 20.dp,
     val reportCardRadius: Dp = 8.dp,
 )
