@@ -38,13 +38,6 @@ import org.sopt.soptackthon_app_3.R
 import org.sopt.soptackthon_app_3.presentation.main.component.MainBottomBar
 import java.time.format.TextStyle
 
-data class Helper(
-    val name: String,
-    val description: String,
-    val rating: Double,
-    val distance: String,
-    val isVerified: Boolean = true
-)
 
 val mockHelperList = listOf(
     CompactUser("a", "Sam Brick", 1.0, "4.5mi", true, profileImagePlaceholder = ""),

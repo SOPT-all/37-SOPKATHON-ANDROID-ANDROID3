@@ -8,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.soptackthon_app_3.data.service.BookingService
 import org.sopt.soptackthon_app_3.data.service.ExampleService
 import org.sopt.soptackthon_app_3.data.service.HelperDetailService
+import org.sopt.soptackthon_app_3.data.service.UserInformationService
 import retrofit2.Retrofit
 
 object ApiFactory {
@@ -35,6 +36,8 @@ object ApiFactory {
 }
 
 object ServicePool {
+    val userinformationService=ApiFactory.create<UserInformationService>()
+
     val exampleService = ApiFactory.create<ExampleService>()
     val bookingService = ApiFactory.create<BookingService>()
     val helperDetailService = ApiFactory.create<HelperDetailService>()
