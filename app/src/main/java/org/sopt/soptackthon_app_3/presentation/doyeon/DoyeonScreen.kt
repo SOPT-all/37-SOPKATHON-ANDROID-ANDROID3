@@ -44,7 +44,7 @@ fun DoyeonRoute(
     val scrollState = rememberScrollState()
 
     LaunchedEffect(Unit) {
-        viewModel.fetchHelperData(1)
+        viewModel.fetchHelperData(8)
     }
 
     DoyeonScreen(

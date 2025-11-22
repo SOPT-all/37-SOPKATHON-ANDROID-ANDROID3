@@ -18,7 +18,7 @@ import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 
 @Composable
 fun HelperHourRates(
-    hourRates: String,
+    hourRates: Float,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -54,7 +54,7 @@ fun HelperHourRates(
 private fun HelperHourRatesPreview() {
     SopkathonTheme {
         HelperHourRates(
-            hourRates = "35",
+            hourRates = 35f,
             )
     }
 }
