@@ -2,13 +2,20 @@ package org.sopt.soptackthon_app_3.presentation.jimin
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
+import org.sopt.soptackthon_app_3.presentation.jimin.component.BookingInfoCard
+import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressBorderCard
+import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressCard
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressContentTitle
 import org.sopt.soptackthon_app_3.presentation.jimin.component.ProgressTitle
 
@@ -18,14 +25,33 @@ fun JiminRoute(
     navigateToYubin: () -> Unit
 ){
     JiminScreen(
+        locateText = "String",
+        dateText = "String",
+        startTime = "String",
+        duration = "String",
+        cashText = 70,
+        bookingInfoModel = BookingInfoModel(
+            reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
+            reportBackgroundColor = SopkathonTheme.colors.primary200,
+            reportCardHorizontalPadding = 18.dp
+        ),
+        preContent = "preContent",
         navigateToYubin = navigateToYubin
     )
 }
 @Composable
 fun JiminScreen (
+    locateText: String,
+    dateText: String,
+    startTime: String,
+    duration: String,
+    cashText: Int,
+    bookingInfoModel: BookingInfoModel,
+    preContent: String,
     modifier : Modifier = Modifier,
     navigateToYubin:() -> Unit = {}
 ){
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -42,15 +68,50 @@ fun JiminScreen (
         )
 
         Column (
-            modifier = Modifier.padding(horizontal = 16.dp)
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .verticalScroll(rememberScrollState())
         ){
 
             ProgressContentTitle(
                 title = "Booking Information",
                 modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
             )
-        }
 
+            BookingInfoCard(
+                locateText = locateText,
+                dateText = dateText,
+                startTime = startTime,
+                duration = duration,
+                cashText = cashText,
+                bookingInfoModel = BookingInfoModel(
+                    reportContent = bookingInfoModel.reportContent,
+                    reportBackgroundColor = bookingInfoModel.reportBackgroundColor,
+                    reportCardHorizontalPadding = bookingInfoModel.reportCardHorizontalPadding
+                )
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            ProgressContentTitle(
+                title = "Pre-Service Report",
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
+            ProgressBorderCard(
+                cardRadius = 8.dp,
+                content = {
+                    ProgressCard(
+                        content = preContent,
+                        backgroundColor = SopkathonTheme.colors.primary300,
+                        horizontalPadding = 23.dp
+                    )
+                },
+            )
+
+            Spacer(modifier = Modifier.height(60.dp))
+
+        }
     }
 
 }
@@ -59,6 +120,27 @@ fun JiminScreen (
 @Composable
 private fun ReviewJiminScreen(){
     SopkathonTheme {
-        JiminScreen()
+        JiminScreen(
+            locateText = "String",
+            dateText = "String",
+            startTime = "String",
+            duration = "String",
+            cashText = 70,
+            bookingInfoModel = BookingInfoModel(
+                reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
+                reportBackgroundColor = SopkathonTheme.colors.primary200,
+                reportCardHorizontalPadding = 18.dp
+            ),
+            preContent = "Hello, this is Sarah Johnson.\n" +
+                    "\n" +
+                    "I will be visiting today at 23:10 to begin the Grocery Shopping service.\n" +
+                    "\n" +
+                    "What I'm bringing:\n" +
+                    "- Cleaning supplies\n" +
+                    "- Shopping bags\n" +
+                    "- Face mask\n" +
+                    "\n" +
+                    "Please feel free to relax while I handle everything. Looking forward to helping!"
+        )
     }
 }

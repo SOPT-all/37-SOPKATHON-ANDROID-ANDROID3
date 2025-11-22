@@ -133,7 +133,7 @@ fun BookingInfoCard(
                 HorizontalDivider(modifier = Modifier.border(width = 1.dp, color = SopkathonTheme.colors.primary100))
 
                 Row (
-                    modifier = Modifier.padding(vertical = 16.dp),
+                    modifier = Modifier.padding(top = 16.dp),
                     verticalAlignment = Alignment.Top
                 ){
                     ProgressInfoTitle(
