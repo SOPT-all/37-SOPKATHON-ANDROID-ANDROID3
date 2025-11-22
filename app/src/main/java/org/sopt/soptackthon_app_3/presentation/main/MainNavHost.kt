@@ -22,18 +22,18 @@ fun MainNavHost(
     ) {
         NavHost(
             navController = navController,
-            startDestination = "doyeon"
+            startDestination = "yubin"
         ) {
 
             composable(route = "juwan") {
                 JuwanRoute(
-                    navigateToDoyeon = { navController.navigateToDoyeon() }
+                    navigateToJimin = { navController.navigateToJimin() }
                 )
             }
 
             composable(route = "doyeon") {
                 DoyeonRoute(
-                    navigateToJimin = { navController.navigateToJimin() }
+                    navigateToJuwan = { navController.navigateToJuwan() }
                 )
             }
 
@@ -46,7 +46,7 @@ fun MainNavHost(
 
             composable(route = "yubin") {
                 YubinRoute(
-                    navigateToJuwan = { navController.navigateToJuwan() },
+                    navigateToDoyeon = { navController.navigateToDoyeon() },
                 )
             }
         }
