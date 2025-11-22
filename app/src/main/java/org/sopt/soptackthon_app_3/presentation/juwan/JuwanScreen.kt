@@ -28,7 +28,7 @@ fun JuwanScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(color = SopkathonTheme.colors.White)
+            .background(color = SopkathonTheme.colors.white)
     ) {
         Text(
             text = "Juwan Screen",

@@ -27,9 +27,7 @@ fun JiminScreen (
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                color = SopkathonTheme.colors.White
-            )
+            .background(color = SopkathonTheme.colors.white)
     ){
         Text(
             text = "Jimin Screen",
