@@ -50,7 +50,7 @@ fun BookingInfoCard(
                 ){
                     ProgressInfoTitle(
                         iconRes = R.drawable.ic_locate,
-                        title = "Locate",
+                        title = "Location",
                     )
 
                     Spacer(modifier = Modifier.weight(1f))

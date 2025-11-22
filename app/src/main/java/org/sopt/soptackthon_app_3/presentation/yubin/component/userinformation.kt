@@ -108,7 +108,7 @@ fun CompactUserInformationComponent(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = user.rating.toString(),
+                            text = user.rating.toString().take(4),
                             style = SopkathonTheme.typography.caption.captionR12,
                             color = SopkathonTheme.colors.primary500
                         )

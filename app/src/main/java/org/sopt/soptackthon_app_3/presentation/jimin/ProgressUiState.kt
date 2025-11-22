@@ -9,9 +9,9 @@ data class ProgressUiState(
     val dateText: String = "2025 / 11 / 22",
     val startTime: String = "17:00 - 20:00",
     val confirmText: String = "17:00 - 19:00",
-    val serviceFee: Double = 30.0,
+    val serviceFee: Double = 70.0,
     val bookingFee: Double = 10.0,
-    val cashText: Double = 40.0,
+    val cashText: Double = 80.0,
     val bookingInfoModel: BookingInfoModel = BookingInfoModel(
         reportContent = "Please keep an extra eye on my parents and make sure everything goes smoothly for them.",
         reportBackgroundColor = Color.White,

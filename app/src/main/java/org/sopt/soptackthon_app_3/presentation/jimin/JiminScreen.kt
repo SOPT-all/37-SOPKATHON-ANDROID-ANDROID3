@@ -166,7 +166,7 @@ fun JiminScreen(
             }
         }
         SopkathonButton(
-            label = "Complete Request $${cashText}",
+            label = "Complete Request $${serviceFee}",
             onClick = navigateToYubin,
             modifier = Modifier
                 .background(color = SopkathonTheme.colors.white)
