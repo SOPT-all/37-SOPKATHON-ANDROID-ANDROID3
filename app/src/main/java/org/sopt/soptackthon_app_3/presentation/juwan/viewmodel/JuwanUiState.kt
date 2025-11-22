@@ -3,7 +3,7 @@ package org.sopt.soptackthon_app_3.presentation.juwan.viewmodel
 import org.sopt.soptackthon_app_3.data.dto.request.BookingRequest
 
 data class JuwanUiState(
-    val helperId: Long = 1L,
+    val helperId: Long = 8L,
     val serviceOfferId: Long = 0L,
     val specialRequests: String = "Enter any special requests or notes for the helper.",
     val startTime: String = "09:00",
