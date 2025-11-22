@@ -147,7 +147,7 @@ fun JuwanScreen(
                 BookInfoSection(
                     title = uiState.visitDate.ifEmpty { "Select Date" },
                     leftIcon = R.drawable.ic_fill_calendar,
-                    rightIcon = null,
+                    rightIcon = R.drawable.ic_dropdown,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
@@ -240,7 +240,7 @@ fun JuwanScreen(
             }
 
             item {
-                Spacer(modifier = Modifier.height(100.dp))
+                Spacer(modifier = Modifier.height(154.dp))
             }
         }
 
