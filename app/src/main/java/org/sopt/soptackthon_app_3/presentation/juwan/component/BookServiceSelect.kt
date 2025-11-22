@@ -23,29 +23,34 @@ fun BookServiceSelect(
     isSelected: Boolean = false,
 ) {
     val (selectColor, borderColor) = when (isSelected) {
-        true -> SopkathonTheme.colors.primary to SopkathonTheme.colors.secondary
-        false -> SopkathonTheme.colors.primary300 to SopkathonTheme.colors.primary900
+        true -> SopkathonTheme.colors.white to SopkathonTheme.colors.primary
+        false -> SopkathonTheme.colors.white to SopkathonTheme.colors.primary400
     }
 
-
+    val textColor = when (isSelected) {
+        true -> SopkathonTheme.colors.primary
+        false -> SopkathonTheme.colors.primary500
+    }
     Box(
         modifier = modifier
             .fillMaxWidth()
             .background(
                 color = selectColor,
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(100.dp)
             )
             .border(
                 width = 1.dp,
                 color = borderColor,
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(100.dp)
             )
             .noRippleClickable(onClick = onBookServiceSelect)
             .padding(vertical = 13.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = serviceText
+            text = serviceText,
+            style = SopkathonTheme.typography.title.titleB14,
+            color = textColor
         )
     }
 }
