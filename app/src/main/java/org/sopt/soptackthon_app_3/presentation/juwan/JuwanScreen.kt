@@ -266,7 +266,7 @@ fun JuwanScreen(
                 .align(Alignment.BottomEnd)
         ) {
             SopkathonButton(
-                label = if (uiState.isLoading) "Loading..." else "Confirm Booking",
+                label = if (uiState.isLoading) "Loading..." else "Confirm Booking ($10)",
                 onClick = { onEvent(JuwanUiEvent.ConfirmBooking) },
                 modifier = Modifier
                     .fillMaxWidth()

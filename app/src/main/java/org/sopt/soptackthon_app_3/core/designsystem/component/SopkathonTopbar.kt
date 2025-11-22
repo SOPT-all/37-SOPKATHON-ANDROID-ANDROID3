@@ -19,17 +19,19 @@ import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 @Composable
 fun SopkathonTopbar(
     modifier: Modifier = Modifier,
+    background: Color = SopkathonTheme.colors.primary,
+    iconColor: Color = SopkathonTheme.colors.white
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = SopkathonTheme.colors.primary)
+            .background(color = background)
             .padding(horizontal = 13.dp, vertical = 13.dp)
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_back_arrow),
             contentDescription = null,
-            tint = SopkathonTheme.colors.white
+            tint = iconColor
         )
     }
 }

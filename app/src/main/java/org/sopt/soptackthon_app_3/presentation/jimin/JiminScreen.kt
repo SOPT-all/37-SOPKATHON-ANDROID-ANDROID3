@@ -34,8 +34,8 @@ import org.sopt.soptackthon_app_3.presentation.jimin.viewmodel.JiminViewModel
 @Composable
 fun JiminRoute(
     progressViewModel: JiminViewModel = viewModel(),
-    navigateToYubin: () -> Unit
-){
+    navigateToYubin: () -> Unit,
+) {
 
     val progressUiState by progressViewModel.uiState.collectAsStateWithLifecycle()
 
@@ -59,21 +59,21 @@ fun JiminRoute(
 
 
 @Composable
-fun JiminScreen (
+fun JiminScreen(
     locateText: String,
     dateText: String,
     startTime: String,
     confirmText: String,
-    serviceFee: Int,
-    bookingFee: Int,
-    cashText: Int,
+    serviceFee: Double,
+    bookingFee: Double,
+    cashText: Double,
     bookingInfoModel: BookingInfoModel,
     preContent: String,
     isPreAnimateVisible: Boolean,
     isPostAnimateVisible: Boolean,
-    modifier : Modifier = Modifier,
-    navigateToYubin:() -> Unit = {}
-){
+    modifier: Modifier = Modifier,
+    navigateToYubin: () -> Unit = {},
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -85,8 +85,12 @@ fun JiminScreen (
             modifier = modifier
                 .fillMaxSize()
                 .background(color = SopkathonTheme.colors.white)
+                .systemBarsPadding()
         ) {
-            SopkathonTopbar(modifier = Modifier.systemBarsPadding())
+            SopkathonTopbar(
+                background = SopkathonTheme.colors.white,
+                iconColor = SopkathonTheme.colors.primary800
+            )
 
             ProgressTitle(
                 title = "Service progress",
@@ -176,16 +180,16 @@ fun JiminScreen (
 
 @Preview(showBackground = true)
 @Composable
-private fun ReviewJiminScreen(){
+private fun ReviewJiminScreen() {
     SopkathonTheme {
         JiminScreen(
             locateText = "String",
             dateText = "String",
             startTime = "String",
             confirmText = "String",
-            serviceFee = 60,
-            bookingFee = 10,
-            cashText = 70,
+            serviceFee = 60.0,
+            bookingFee = 10.0,
+            cashText = 70.0,
             bookingInfoModel = BookingInfoModel(
                 reportContent = "Please pay special attention to my parents and make sure they’re well taken care of.",
                 reportBackgroundColor = SopkathonTheme.colors.primary200,
