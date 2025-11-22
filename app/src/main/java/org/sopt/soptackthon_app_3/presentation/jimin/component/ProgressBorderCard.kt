@@ -22,15 +22,16 @@ fun ProgressBorderCard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .background(
-                color = SopkathonTheme.colors.white,
-            )
             .border(
                 width = 1.dp,
                 color = SopkathonTheme.colors.primary300,
                 shape = RoundedCornerShape(cardRadius)
             )
-            .padding(horizontal = 16.dp, vertical = 20.dp),
+            .background(
+                color = SopkathonTheme.colors.white,
+                shape = RoundedCornerShape(cardRadius)
+            )
+            .padding(horizontal = 16.dp, vertical = 28.dp),
     ) {
         content()
     }

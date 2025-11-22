@@ -23,23 +23,23 @@ fun ProgressTitle(
         modifier = modifier
             .fillMaxWidth()
             .background(
-                color = SopkathonTheme.colors.primary500
+                color = SopkathonTheme.colors.white
             )
-            .padding(horizontal = 16.dp)
-            .padding(top = 32.dp, bottom = 50.dp)
+            .padding(horizontal = 24.dp)
+            .padding(top = 24.dp, bottom = 68.dp)
     ){
         Text(
             text = title,
             color = SopkathonTheme.colors.black,
-            style = SopkathonTheme.typography.title.titleSb16
+            style = SopkathonTheme.typography.heading.headingSb20
         )
 
-        Spacer(modifier = Modifier.height(2.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
         Text(
             text = subTitle,
-            color = SopkathonTheme.colors.black,
-            style = SopkathonTheme.typography.body.bodyM14
+            color = SopkathonTheme.colors.primary500,
+            style = SopkathonTheme.typography.caption.captionR12
         )
     }
 
@@ -48,9 +48,11 @@ fun ProgressTitle(
 @Preview(showBackground = true)
 @Composable
 private fun ProgressTitlePreview() {
-    ProgressTitle(
-        title = "Service progress",
-        subTitle = "Your reservation is confirmed!\n" +
-                "We’ll keep you updated as things progress."
-    )
+    SopkathonTheme {
+        ProgressTitle(
+            title = "Service progress",
+            subTitle = "Your reservation is confirmed!\n" +
+                    "We’ll keep you updated as things progress."
+        )
+    }
 }

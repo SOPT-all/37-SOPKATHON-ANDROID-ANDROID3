@@ -15,7 +15,7 @@ fun ProgressContentTitle(
     Text(
         text = title,
         modifier = modifier.fillMaxWidth(),
-        color = SopkathonTheme.colors.primary900,
+        color = SopkathonTheme.colors.black,
         style = SopkathonTheme.typography.title.titleSb16,
     )
 }

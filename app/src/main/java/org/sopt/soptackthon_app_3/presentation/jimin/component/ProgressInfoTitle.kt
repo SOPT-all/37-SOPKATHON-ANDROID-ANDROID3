@@ -28,15 +28,15 @@ fun ProgressInfoTitle(
             imageVector = ImageVector.vectorResource(iconRes),
             contentDescription = null,
             modifier = Modifier.size(22.dp),
-            tint = SopkathonTheme.colors.primary800
+            tint = SopkathonTheme.colors.primary
         )
 
-        Spacer(modifier = Modifier.width(10.dp))
+        Spacer(modifier = Modifier.width(8.dp))
 
         Text(
             text = title,
             color = SopkathonTheme.colors.primary500,
-            style = SopkathonTheme.typography.title.titleSb14
+            style = SopkathonTheme.typography.body.bodyM14
         )
     }
 }
@@ -44,8 +44,10 @@ fun ProgressInfoTitle(
 @Preview(showBackground = true)
 @Composable
 private fun ProgressInfoTitlePreview() {
-    ProgressInfoTitle(
-        iconRes = R.drawable.ic_locate,
-        title = "Locate"
-    )
+    SopkathonTheme {
+        ProgressInfoTitle(
+            iconRes = R.drawable.ic_locate,
+            title = "Locate"
+        )
+    }
 }
