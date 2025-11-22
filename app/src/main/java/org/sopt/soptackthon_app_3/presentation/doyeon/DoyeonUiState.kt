@@ -5,7 +5,7 @@ import org.sopt.soptackthon_app_3.presentation.doyeon.model.HelperAvailabilityDa
 data class DoyeonUiState(
     val imgUrl: String = "",
     val name: String = "",
-    val rate: String = "",
+    val rate: Float = 0f,
     val distance: String = "",
     val serviceList: List<String> = emptyList(),
     val bio: String = "",

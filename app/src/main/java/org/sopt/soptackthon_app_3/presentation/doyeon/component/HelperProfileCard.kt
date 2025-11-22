@@ -30,7 +30,7 @@ import org.sopt.soptackthon_app_3.core.designsystem.theme.SopkathonTheme
 fun HelperProfileCard(
     imgUrl: String,
     name: String,
-    rate: String,
+    rate: Float,
     distance: String,
     modifier: Modifier = Modifier,
 ) {
@@ -94,7 +94,7 @@ private fun HelperName(
 
 @Composable
 private fun HelperDetail(
-    rate: String,
+    rate: Float,
     distance: String,
 ) {
     Column {
@@ -113,7 +113,7 @@ private fun HelperDetail(
             Spacer(Modifier.width(4.dp))
 
             Text(
-                text = rate,
+                text = rate.toString(),
                 style = SopkathonTheme.typography.caption.captionR12,
                 color = SopkathonTheme.colors.white
             )
@@ -179,7 +179,7 @@ private fun HelperProfileCardPreview() {
         HelperProfileCard(
             imgUrl = "TODO()",
             name = "Sam Brick",
-            rate = "4.5",
+            rate = 4.5f,
             distance = "0.2 mi",
         )
     }
